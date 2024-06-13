@@ -2,4 +2,6 @@
 
 # Project Megatherion
 
-Tento repozitář obsahuje soubory teré jsem použil k samostudiu předmětu APR2
+Tento repozitář obsahuje soubory které jsem vypracoval v samostudiu předmětu APR2
+# Originální repozitář
+https://github.com/Jiri-Fiser/megatherion/
