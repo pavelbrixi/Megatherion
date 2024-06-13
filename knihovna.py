@@ -241,12 +241,5 @@ if __name__ == "__main__":
     #knihovna.odstranit_zaznam(1)
 
     #print(knihovna)
-    #print(knihovna.window())
-
-    df = Knihovna(dict(
-        a=Column([1, 3.1415], Type.Float),
-        b=Column(["a", 2], Type.String),
-        c=Column(range(2), Type.Float)
-        ))
-    
+  
     print(knihovna.window())
