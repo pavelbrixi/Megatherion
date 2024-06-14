@@ -436,6 +436,23 @@ class DataFrame:
                 data = [hodnota - value for hodnota in data]
                 self._columns[i] = Column(data, Type.Float)
 
+    def suma(self) ->  'DataFrame':
+
+        for column in self._columns.keys():
+            mezivypocet = 0
+            if (self._columns.get(column))._cast == to_float:
+                data = list(self._columns.get(column, []))
+                for polozka in data:
+                    mezivypocet += polozka
+                data.append(mezivypocet)
+                self._columns[column] = Column(data, Type.Float)
+            else:
+                data = list(self._columns.get(column, []))
+                data.append(None)
+                self._columns[column] = Column(data, Type.String)
+
+        self._size += 1
+
 class Reader(ABC):
     def __init__(self, path: Union[Path, str]):
         self.path = Path(path)
@@ -548,6 +565,8 @@ if __name__ == "__main__":
     ### ODEČTENÍ ZADANÉ HODNOTY KE VŠEM ČÍSELNÝM POLOŽKÁM
     ### [jméno dataframe].add([menšitel])
     #df.sub(1)
+
+    #df.suma()
 
     print(df)
 
