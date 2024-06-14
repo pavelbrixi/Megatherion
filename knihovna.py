@@ -211,17 +211,17 @@ class Knihovna:
         self.field_width = max(sizes)
 
         lines = []
-        lines.append("".join("─" * self.field_width + "┬") * len(self.columns))
-        lines.append("│".join(f"{name:{self.field_width}s}" for name in self.columns) + "│")
-        lines.append("".join("─" * self.field_width + "┼") * len(self.columns))
+        lines.append("┌" + "".join("─" * self.field_width + "┬") * (len(self.columns) - 1) + ("─" * self.field_width + "┐"))
+        lines.append("│" +"│".join(f"{name:{self.field_width}s}" for name in self.columns) + "│")
+        lines.append("├" +"".join("─" * self.field_width + "┼") * (len(self.columns) - 1) + ("─" * self.field_width + "┤"))
         pocet_polozek = self._size
         for i in range(len(self)):
-            lines.append("│".join(self._columns[cname].get_formatted_item(i, width=self.field_width) for cname in self.columns) + "│")
+            lines.append("│" + "│".join(self._columns[cname].get_formatted_item(i, width=self.field_width) for cname in self.columns) + "│")
             if pocet_polozek > 1:
-                lines.append("".join("─" * self.field_width + "┼") * len(self.columns))
+                lines.append("├" + "".join("─" * self.field_width + "┼") * (len(self.columns) - 1) + ("─" * self.field_width + "┤"))
                 pocet_polozek -= 1
             else:
-                lines.append("".join("─" * self.field_width + "┴") * len(self.columns))
+                lines.append("└" + "".join("─" * self.field_width + "┴") * (len(self.columns) - 1) + ("─" * self.field_width + "┘"))
         return "\n".join(lines)
 
 
